@@ -1,11 +1,24 @@
 import React from 'react'
 import { Router, Switch } from 'react-router'
-import { History, TransitionPromptHook } from 'history'
+import { History, Location } from 'history'
 import { Cmd, AppProps, App } from 'hydux'
 import PropTypes from 'prop-types'
 
 const CHANGE_LOCATION = '@@hydux-react-router/CHANGE_LOCATION'
-let history: History = null as any
+export { History, Location }
+export type RouterActions<Actions> = Actions & {
+  history: {
+    push(path: string, state?: any): void,
+    replace(path: string, state?: any): void,
+    go(n: number): void,
+    goBack(): void,
+    goForward(): void,
+  }
+}
+export type RouterState<State> = State & {
+  location: Location
+}
+
 export function ConnectedSwitch(props, { router }) {
   return (
     <Switch location={router.route.location} {...props}>
@@ -36,7 +49,6 @@ export default function withReactRouter<S, A>(history: History) {
         goForward: () => history.goForward(),
         push: (path: string, state?) => history.push(path, state),
         replace: (path: string, state?) => history.replace(path, state),
-        getRawHistory: () => history,
       },
       [CHANGE_LOCATION]: location => state => ({ ...state, location })
     },
