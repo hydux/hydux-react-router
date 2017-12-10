@@ -32,7 +32,7 @@ export function ConnectedSwitch(props, { router }) {
 }
 
 export default function withReactRouter<S, A>(history: History) {
-  return app => (props: AppProps<S, A>) => app({
+  return (app: App<RouterState<S>, RouterActions<A>>) => (props: AppProps<S, A>) => app({
     ...props,
     init: () => {
       let result = props.init()
@@ -42,7 +42,7 @@ export default function withReactRouter<S, A>(history: History) {
       return [{ ...(result[0] as any), location: history.location }, result[1]]
     },
     actions: {
-      ...(props.actions as object),
+      ...props.actions as any,
       history: {
         go: n => history.go(n),
         goBack: () => history.goBack(),
