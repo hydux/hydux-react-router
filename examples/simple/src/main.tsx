@@ -3,7 +3,7 @@ import withPersist from 'hydux/lib/enhancers/persist'
 import withReact from 'hydux-react'
 import React from 'react'
 import { ActionsType } from 'hydux/lib/types'
-import withReactRouter, { ConnectedSwitch } from '../../../src/index'
+import withReactRouter, { ConnectedSwitch, RouterState, RouterActions } from '../../../src/index'
 import { Link, Route, Redirect } from 'react-router-dom'
 import { createHashHistory } from 'history'
 import Counter from './counter'
@@ -40,7 +40,7 @@ const Home = () => <div>Home</div>
 const Users = () => <div>Users</div>
 console.log('react', require('hydux-react'))
 
-const view = (state: State) => (actions: Actions) => (
+const view = (state: RouterState<State>) => (actions: RouterActions<Actions>) => (
   <main>
     <style>{`
         a {
