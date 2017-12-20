@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Router, Switch } from 'react-router'
 import { History, Location } from 'history'
 import { Cmd, AppProps, App, Init,
