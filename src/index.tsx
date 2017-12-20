@@ -4,7 +4,7 @@ import { History, Location } from 'history'
 import { Cmd, AppProps, App, Init,
   View, Subscribe, OnUpdate } from 'hydux'
 import { ActionsType } from 'hydux/lib/types'
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 
 const CHANGE_LOCATION = '@@hydux-react-router/CHANGE_LOCATION'
 export { History, Location, Switch }
