@@ -40,7 +40,7 @@ const Home = () => <div>Home</div>
 const Users = () => <div>Users</div>
 console.log('react', require('hydux-react'))
 
-const view = (state: RouterState<State>) => (actions: RouterActions<Actions>) => (
+const view = (state: RouterState<State>, actions: RouterActions<Actions>) => (
   <main>
     <style>{`
         a {
@@ -57,7 +57,7 @@ const view = (state: RouterState<State>) => (actions: RouterActions<Actions>) =>
       <Route exact path="/" component={Home}/>
       <Route path="/users" component={Users}/>
       <Redirect from="/accounts" to="/users"/>
-      <Route path="/counter" render={() => Counter.view(state.counter)(actions.counter)} />
+      <Route path="/counter" render={() => Counter.view(state.counter, actions.counter)} />
       <Route component={NoMatch}/>
     </ConnectedSwitch>
   </main>
