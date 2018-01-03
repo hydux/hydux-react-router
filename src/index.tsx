@@ -64,8 +64,8 @@ export default function withReactRouter<S, A>(history: History) {
       },
       [CHANGE_LOCATION]: location => state => ({ ...state, location })
     },
-    view: state => actions => {
-      const view = props.view(state)(actions)
+    view: (state, actions) => {
+      const view = props.view(state, actions)
       return <Router history={history}>{view}</Router>
     },
     subscribe: state => {
