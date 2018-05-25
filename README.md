@@ -51,7 +51,7 @@ const NoMatch = () => <div>404</div>
 const Home = () => <div>Home</div>
 const Users = () => <div>Users</div>
 
-const view = (state: State) => (actions: Actions) => (
+const view = (state: State, actions: Actions) => (
   <main>
     <style>{`
         a {
